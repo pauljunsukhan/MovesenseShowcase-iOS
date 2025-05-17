@@ -20,7 +20,7 @@ The `MAX3000xProgrammer.swift` module provides a high-level Swift interface to d
     *   A pre-defined convenience method that executes the specific sequence for an EEG-friendly setup (detailed below).
 
 **Underlying Mechanism:**
-The module uses direct calls to `MDSWrapper.sharedInstance().doPut(...)`, passing parameters as an unnamed JSON array in the `contract` argument. This aligns with the Movesense iOS SDK's method for handling positional parameters for these generic component paths.
+The module uses direct calls to `MDSWrapper.shared.doPut(...)`, passing parameters as an unnamed JSON array in the `contract` argument. This aligns with the Movesense iOS SDK's method for handling positional parameters for these generic component paths.
 
 ## II. Configuring MAX3000x for EEG Measurements
 
