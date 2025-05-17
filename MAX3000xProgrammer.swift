@@ -20,7 +20,7 @@ private enum MAX3000xMdsWriter {
                                   NSNumber(value: Int(value))]
         let fullPath = "/\(deviceSerial)\(registerBasePath)"
 
-        MDSWrapper.sharedInstance().doPut(fullPath, contract: paramsArray) { response in
+        MDSWrapper.shared.doPut(fullPath, contract: paramsArray) { response in
             if response.statusCode == 200 {
                 completion(nil)
             } else {
@@ -35,7 +35,7 @@ private enum MAX3000xMdsWriter {
         let paramsArray: [Any] = [NSNumber(value: Int(address))]
         let fullPath = "/\(deviceSerial)\(registerBasePath)"
 
-        MDSWrapper.sharedInstance().doGet(fullPath, contract: paramsArray) { response in
+        MDSWrapper.shared.doGet(fullPath, contract: paramsArray) { response in
             if response.statusCode == 200 {
                 if let body = response.bodyDictionary, let params = body["Parameters"] as? [NSNumber], params.count == 2 {
                     completion(.success(params[1].uint32Value))
@@ -59,7 +59,7 @@ private enum MAX3000xMdsWriter {
         let paramsArray: [Any] = [NSNumber(value: Int(command))]
         let fullPath = "/\(deviceSerial)\(commandBasePath)"
 
-        MDSWrapper.sharedInstance().doPut(fullPath, contract: paramsArray) { response in
+        MDSWrapper.shared.doPut(fullPath, contract: paramsArray) { response in
             if response.statusCode == 200 {
                 completion(nil)
             } else {
