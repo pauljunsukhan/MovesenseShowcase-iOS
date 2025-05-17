@@ -29,11 +29,12 @@ extension FileHandle {
                 return lineData
             }
 
-            if (readBuffer.count > 0) == false {
-                return nil
+            if readBuffer.isEmpty {
+                // EOF reached without a delimiter. Return remaining buffer if not empty.
+                return dataBuffer.isEmpty ? nil : dataBuffer
             }
 
-        } while (dataBuffer.count > 0)
+        } while true
 
         return nil
     }
